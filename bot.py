@@ -62,6 +62,7 @@ async def ban(ctx, member: discord.Member, *, reason = ''):
 # Если есть права администраторо, то банет определённого пользователя и выводит текст об этом в чат.
 
 @client.command()
+@commands.has_permissions(administrator = True)
 
 async def help (ctx):
 	await ctx.message.delete()
