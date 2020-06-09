@@ -124,7 +124,7 @@ async def rand (ctx, amount = 10):
 
 @help.error
 
-async def ban_error (ctx, error):
+async def help_error (ctx, error):
 	if isinstance(error, commands.MissingPermissions):
 		await ctx.message.delete()
 		await ctx.send(f'{ctx.author.name}, у вас не достаточно прав для использования данной команды.')
