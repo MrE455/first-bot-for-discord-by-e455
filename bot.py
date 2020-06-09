@@ -8,6 +8,9 @@ PREFIX = '!'
 token = os.environ.get('TOKEN')
 ID_Channel = os.environ.get('IDCHANNEL')
 ID_ROLE = os.environ.get('IDROLE')
+ID_Chat1 = os.environ.get('IDCHAT1')
+ID_Chat2 = os.environ.get('IDCHAT2')
+ID_Chat3 = os.environ.get('IDCHAT3')
 
 client = commands.Bot(command_prefix = PREFIX)
 # Бот будет реагировать на комманды начинающиеся с "!".
@@ -17,9 +20,9 @@ client = commands.Bot(command_prefix = PREFIX)
 @client.event
 
 async def bot_online ():
-	chat1 = client.get_channel(714478174737530970)
-	chat2 = client.get_channel(714509647066693664)
-	chat3 = client.get_channel(714509672769650770)
+	chat1 = client.get_channel(int(ID_Chat1))
+	chat2 = client.get_channel(int(ID_Chat2))
+	chat3 = client.get_channel(int(ID_Chat3))
 	now = datetime.datetime.now()
 	if now.hour == 10:
 		await chat1.send(embed = discord.Embed(description = 'Доброе утро!', color = 0xE32636))
