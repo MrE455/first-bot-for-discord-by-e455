@@ -65,7 +65,7 @@ async def ban(ctx, member: discord.Member, *, reason = ''):
 
 async def help (ctx):
 	await ctx.message.delete()
-	emb = discord.Embed(title = 'Список комманд данного сервера:', colour = discord.Color.dark_gold())
+	emb = discord.Embed(title = 'Список команд данного бота:', colour = discord.Color.dark_gold())
 	emb.add_field(name = '{}clear'.format(PREFIX), value = '(ВНИМАНИЕ только для MODER и выше) Удаляет указанное пользователем число сообщений (по стандарту 50), с учётом сообщения с командой. Пример: !clear 12')
 	emb.add_field(name = '{}kick'.format(PREFIX), value = '(ВНИМАНИЕ только для MODER и выше) Кикакет определённого пользователя с сервера. Пример: !kick @LOX')
 	emb.add_field(name = '{}ban'.format(PREFIX), value = '(ВНИМАНИЕ только для ADMINISTRATOR) Банет определённого пользователя на сервере. Пример: !ban @LOX')
