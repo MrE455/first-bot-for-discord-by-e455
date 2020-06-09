@@ -73,7 +73,7 @@ async def help (ctx):
 	emb.add_field(name = '{}telegram'.format(PREFIX), value = 'Ссылка на телеграм автора.')
 	emb.add_field(name = '{}get_message'.format(PREFIX), value = 'Получить сообщение от бота.')
 	emb.add_field(name = '{}send_to'.format(PREFIX), value = '(ВНИМАНИЕ только для MODER и выше) Поприветствовать пользователя через бота. Пример: !send_to @LOX')
-	#emb.add_field(name = '{}rand'.rormat(PREFIX), value = 'Выводит случайное число от 1 до введённого пользователем (по стандарту 10) включительно. Пример: !rand 100')
+	emb.add_field(name = '{}rand'.format(PREFIX), value = 'Выводит случайное число от 1 до введённого пользователем (по стандарту 10) включительно. Пример: !rand 100')
 	await ctx.send(embed = emb)
 # Список команд сервера.
 
