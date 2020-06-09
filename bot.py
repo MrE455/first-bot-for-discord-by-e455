@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 from random import randint
+import datetime
 
 PREFIX = '!'
 token = os.environ.get('TOKEN')
@@ -12,6 +13,23 @@ client = commands.Bot(command_prefix = PREFIX)
 # Бот будет реагировать на комманды начинающиеся с "!".
 @client.remove_command('help')
 # Удаляет стандартную команду 'help'.
+
+@client.event
+
+async def bot_online ():
+	chat1 = client.get_channel(714478174737530970)
+	chat2 = client.get_channel(714509647066693664)
+	chat3 = client.get_channel(714509672769650770)
+	now = datetime.datetime.now()
+	if now.hour == 10:
+		await chat1.send(embed = discord.Embed(description = 'Доброе утро!', color = 0xE32636))
+		await chat2.send(embed = discord.Embed(description = 'Доброе утро!', color = 0xE32636))
+		await chat3.send(embed = discord.Embed(description = 'Доброе утро!', color = 0xE32636))
+	elif now.hour == 22:
+		await chat1.send(embed = discord.Embed(description = 'Доброй ночи!', color = 0xB5651D))
+		await chat2.send(embed = discord.Embed(description = 'Доброй ночи!', color = 0xB5651D))
+		await chat3.send(embed = discord.Embed(description = 'Доброй ночи!', color = 0xB5651D))
+# Пишет в чат в определённое время.
 
 @client.event
 
