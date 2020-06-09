@@ -122,6 +122,14 @@ async def rand (ctx, amount = 10):
 	await ctx.send('Это число: ' + str(randint(1, amount)))
 # Отправляет рандомное число в диапозоне от 1 до "amount" (по стандарту до 10 ) включительно.
 
+@help.error
+
+async def ban_error (ctx, error):
+	if isinstance(error, commands.MissingPermissions):
+		await ctx.message.delete()
+		await ctx.send(f'{ctx.author.name}, у вас не достаточно прав для использования данной команды.')
+# Говорит пользователю что у него недостаточно прав.
+
 @clear.error
 
 async def clear_error(ctx, error):
