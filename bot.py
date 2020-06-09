@@ -1,10 +1,13 @@
 import discord
 from discord.ext import commands
-from config import settings
+import os
 
 PREFIX = '!'
+token = os.environ.get('TOKEN')
+ID_Channel = os.environ.get('IDCHANNEL')
+ID_ROLE = os.environ.get('IDROLE')
 
-client = commands.Bot(command_prefix = settings['PREFIX'])
+client = commands.Bot(command_prefix = PREFIX)
 # Бот будет реагировать на комманды начинающиеся с "!".
 @client.remove_command('help')
 # Удаляет стандартную команду 'help'.
@@ -26,8 +29,8 @@ async def on_command_error(ctx, error):
 @client.event
 
 async def on_member_join(member):
-	channel = client.get_channel(714515829580103772)
-	role = discord.utils.get(member.guild.roles, id = 714476269978386502)
+	channel = client.get_channel(int(ID_Channel))
+	role = discord.utils.get(member.guild.roles, id = int(ID_ROLE))
 	await member.add_roles(role)
 	await channel.send(embed = discord.Embed(description = f'Пользователь ``{member.name}`` присоединился к нам!', color = 0xFFD966))
 # Получение роли "User".
@@ -153,5 +156,5 @@ async def send_to_error(ctx, error):
 # Говорит пользователю что у него недостаточно прав.
 # Говорит что необходимо ввести пользователя.
 
-client.run(settings['TOKEN'])
+client.run(str(token))
 # Подключение БОТа.
