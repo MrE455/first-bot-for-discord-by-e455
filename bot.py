@@ -84,7 +84,9 @@ async def help (ctx):
 
 async def xxx (ctx, amount:int = 0):
 	await ctx.message.delete()
-	if amount == 1:
+	if amount == 0:
+		await ctx.send(f"**{ctx.author.mention}**, пропишите команду с номером сайта из списка:\n1. Pornhub\n2. XVideos\n3. xHamster\n4. XNXX\n5. Porno365")
+	elif amount == 1:
 		webbrowser.open('https://pornhub.com')
 	elif amount ==	2:
 		webbrowser.open('https://xvideos.com')
@@ -149,14 +151,6 @@ async def help_error (ctx, error):
 		await ctx.message.delete()
 		await ctx.send(f'{ctx.author.name}, у вас не достаточно прав для использования данной команды.')
 # Говорит пользователю что у него недостаточно прав.
-
-@xxx.error
-
-async def xxx_error (ctx, error):
-	if isinstance(error, commands.MissingRequiredArgument):
-		await ctx.message.delete()
-		await ctx.send(f"{ctx.author.name}, пропишите команду с номером сайта из списка:\n1. Pornhub\n2. XVideos\n3. xHamster\n4. XNXX\n5. Porno365")
-# Говорит что нужно ввести.
 
 @clear.error
 
