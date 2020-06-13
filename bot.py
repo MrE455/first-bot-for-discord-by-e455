@@ -87,15 +87,15 @@ async def xxx (ctx, amount:int = 0):
 	if amount == 0:
 		await ctx.send(f"**{ctx.author.mention}**, пропишите команду с номером сайта из списка:\n1. Pornhub\n2. XVideos\n3. xHamster\n4. XNXX\n5. Porno365")
 	elif amount == 1:
-		webbrowser.open('https://pornhub.com')
+		webbrowser.get(using='google-chrome').open_new_tab('https://pornhub.com')
 	elif amount ==	2:
-		webbrowser.open('https://xvideos.com')
+		webbrowser.get(using='google-chrome').open_new_tab('https://xvideos.com')
 	elif amount ==	3:
-		webbrowser.open('https://xhamster.com')
+		webbrowser.get(using='google-chrome').open_new_tab('https://xhamster.com')
 	elif amount ==	4:
-		webbrowser.open('https://xnxx.com')
+		webbrowser.get(using='google-chrome').open_new_tab('https://xnxx.com')
 	elif amount ==	5:
-		webbrowser.open('https://porno365.red')
+		webbrowser.get(using='google-chrome').open_new_tab('https://porno365.red')
 	else:
 		await ctx.send(f"**{ctx.author.mention}**, такого в списке нет.")
 # Команда XXX
