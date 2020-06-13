@@ -75,8 +75,27 @@ async def help (ctx):
 	emb.add_field(name = '{}get_message'.format(PREFIX), value = 'Получить сообщение от бота.')
 	emb.add_field(name = '{}send_to'.format(PREFIX), value = '(ВНИМАНИЕ только для MODER и выше) Поприветствовать пользователя через бота. Пример: !send_to @LOX')
 	emb.add_field(name = '{}rand'.format(PREFIX), value = 'Выводит случайное число от 1 до введённого пользователем (по стандарту 10) включительно. Пример: !rand 100')
+	emb.add_field(name = '{}xxx'.format(PREFIX), value = '(ВНИМАНИЕ только для лиц от 18 лет) Команда отвечающая за удовольствие. Пример: !xxx')
 	await ctx.send(embed = emb)
 # Список команд сервера.
+
+@client.command()
+
+async def xxx (ctx, amount:int = 0):
+	await ctx.message.delete()
+	if amount == 1:
+		webbrowser.open('https://pornhub.com')
+	elif amount ==	2:
+		webbrowser.open('https://xvideos.com')
+	elif amount ==	3:
+		webbrowser.open('https://xhamster.com')
+	elif amount ==	4:
+		webbrowser.open('https://xnxx.com')
+	elif amount ==	5:
+		webbrowser.open('https://porno365.red')
+	else:
+		await ctx.send(f"**{ctx.author.mention}**, такого в списке нет.")
+# Команда XXX
 
 @client.command()
 
@@ -129,6 +148,14 @@ async def help_error (ctx, error):
 		await ctx.message.delete()
 		await ctx.send(f'{ctx.author.name}, у вас не достаточно прав для использования данной команды.')
 # Говорит пользователю что у него недостаточно прав.
+
+@xxx.error
+
+async def xxx_error (ctx, error):
+	if isinstance(error, commands.MissingRequiredArgument):
+		await ctx.message.delete()
+		await ctx.send(f"{ctx.author.name}, пропишите команду с номером сайта из списка:\n1. Pornhub\n2. XVideos\n3. xHamster\n4. XNXX\n5. Porno365")
+# Говорит что нужно ввести.
 
 @clear.error
 
