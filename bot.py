@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 from random import randint
+import webbrowser
 
 PREFIX = '!'
 token = os.environ.get('TOKEN')
