@@ -3,6 +3,7 @@ from discord.ext import commands
 import os
 from random import randint
 import webbrowser
+from Cybernator import Paginator as Pag
 
 PREFIX = '!'
 token = os.environ.get('TOKEN')
@@ -77,6 +78,7 @@ async def help (ctx):
 	emb.add_field(name = '{}send_to'.format(PREFIX), value = '(ВНИМАНИЕ только для MODER и выше) Поприветствовать пользователя через бота. Пример: !send_to @LOX')
 	emb.add_field(name = '{}rand'.format(PREFIX), value = 'Выводит случайное число от 1 до введённого пользователем (по стандарту 10) включительно. Пример: !rand 100')
 	emb.add_field(name = '{}xxx'.format(PREFIX), value = '(ВНИМАНИЕ только для лиц от 18 лет) Команда отвечающая за удовольствие. Пример: !xxx')
+	emb.add_field(name = '{}article'.format(PREFIX), value = 'Прочитать статью на сервере.')
 	await ctx.send(embed = emb)
 # Список команд сервера.
 
@@ -143,6 +145,22 @@ async def rand (ctx, amount = 10):
 	await ctx.message.delete()
 	await ctx.send('Это число: ' + str(randint(1, amount)))
 # Отправляет рандомное число в диапозоне от 1 до "amount" (по стандарту до 10 ) включительно.
+
+@client.command()
+
+async def article (ctx):
+	embed1 = discord.Embed(title = "Страница №1", description = "Тестовое описание №1")
+	embed2 = discord.Embed(title = "Страница №2", description = "Тестовое описание №2")
+	embed3 = discord.Embed(title = "Страница №3", description = "Тестовое описание №3")
+	embed4 = discord.Embed(title = "Страница №4", description = "Тестовое описание №4")
+	embed5 = discord.Embed(title = "Страница №5", description = "Тестовое описание №5")
+
+	embeds = [embed1, embed2, embed3, embed4, embed5]
+	mes = await ctx.send(embed = embed1)
+	page = Pag(client, mes, only = ctx.author, use_more = False, embeds = embeds, footer = False, reactions = ["👈", "👉"])
+
+	await page.start()
+# Показывает статью.
 
 @help.error
 
